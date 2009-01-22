@@ -1,0 +1,7 @@
+h2. rbot plugins
+
+This is just a little place to store rbot plugins that I am working on for #yui on freenode.
+
+Current List:
+
+   * logger: MySQL channel logging. Supports being logged into multiple channels.
