@@ -1,0 +1,12 @@
+h2.Join Message
+
+This is a rough starter for this plugin.
+
+Currently, it will send a message to the user when they join the channel.
+
+TODO:
+
+   * Set different messages for different channels
+   * Setup config attributes
+   * List messages
+   * List users that have seen the messages
