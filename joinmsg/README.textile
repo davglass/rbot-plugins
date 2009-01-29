@@ -1,4 +1,4 @@
-h2.Join Message
+h2. Join Message
 
 This is a rough starter for this plugin.
 
