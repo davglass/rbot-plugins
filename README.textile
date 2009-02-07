@@ -6,9 +6,12 @@ h3. Current List:
 
    * logger: MySQL channel logging. Supports being logged into multiple channels.
 
+h3. In progress:
+   
+   * First Join Message: support for sending the user a message the first time they are seen. Kind of like a channel rules message.
+
 h3. Ideas:
 
-   * First Join Message: support for sending the user a message the first time they are seen. Kind of like a channel rules message.
    * github stats: Ask the bot to fetch GitHub commits from the GitHub API
    * jseval: A plugin to eval JavaScript
    * docs:  YUI doc search
