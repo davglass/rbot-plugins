@@ -74,6 +74,28 @@ class Logger < Plugin
         "Logger: log all irc traffic to a database"
     end
 
+    def replay(m, args)
+        nick = m.source.nick
+        channel = m.channel.to_s
+        begin
+            @dbconn.ping()
+        rescue
+            connect()
+        end
+        channel_sql = ""
+        if channel
+            channel_sql = " (channel = '#{channel}') and "
+        end
+
+        sql = "select #{@whoColumn}, #{@whatColumn} from #{@tableName} where #{channel_sql} (UNIX_TIMESTAMP(stamp) > (UNIX_TIMESTAMP(NOW()) - (60 * #{args[:time]})))"
+        @bot.say nick, "#{nick}, Replaying log from #{args[:time]} minutes ago for #{channel}.."
+        res = @dbconn.query(sql)
+        while row = res.fetch_row do
+            @bot.say nick, "#{row[0]}:  #{row[1]}"
+        end
+
+    end
+
     def listen(m)
         if @listen
             if not m.private?
@@ -95,3 +117,4 @@ class Logger < Plugin
 end
 
 plugin = Logger.new
+plugin.map 'logger replay :time [*10]', :action => 'replay'
